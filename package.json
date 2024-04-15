@@ -1,0 +1,18 @@
+{
+  "name": "EasyStaticMap",
+  "version": "0.0.1",
+  "description": "Create easy static maps in the browser.",
+  "main": "./dist/easystaticmap.js",
+  "repository": "https://github.com/jaxcksn/easystaticmap.git",
+  "author": "Jackson Casey <65034067+jaxcksn@users.noreply.github.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack"
+  },
+  "devDependencies": {
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.4.5",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4"
+  }
+}

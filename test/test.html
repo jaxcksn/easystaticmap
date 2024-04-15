@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <canvas id="mapCanvas"></canvas>
+
+    <script src="../dist/easystaticmap.js"></script>
+    <script>
+      let easystaticmap = new EasyStaticMap.default({
+        width: 600,
+        height: 600,
+        tilesize: 256,
+        tileURL:
+          "https://{a-d}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+      });
+
+      let polyString =
+        "-101.87518325861588 33.58354969198969,-101.87518164178499 33.58297797638035,-101.8750956992532 33.58297649662306,-101.87509793169009 33.58294245596953,-101.8750132903569 33.58294146742428,-101.8750132903569 33.58299425245808,-101.8749711609203 33.58299525734232,-101.87497177012338 33.583349465999206,-101.87441803722957 33.58335100242735,-101.87441418991145 33.58297078141723,-101.87435115496285 33.58296822747576,-101.87435409846655 33.58292931801533,-101.8742565964331 33.58292767982901,-101.87426438877898 33.58296622298779,-101.87419551567781 33.58296622298779,-101.87419235944148 33.58354974637312,-101.87518325861588 33.58354969198969";
+      let splitPoly = polyString.split(",");
+      let poly = [
+        splitPoly.map((coord) => {
+          let split = coord.split(" ");
+          return [Number(split[1]), Number(split[0])];
+        }),
+      ];
+
+      easystaticmap.addMultiPolygon({
+        coords: poly,
+        fillColor: "#ff000033",
+        strokeColor: "#ff0000",
+        strokeWidth: 1.5,
+      });
+
+      let polyString2 =
+        "-101.87584101965618 33.58522274857292,-101.87584101965618 33.584771116190964,-101.87673808850994 33.58479317634534,-101.87674101141091 33.58515300683129,-101.8764026092761 33.58515300683129,-101.87584101965618 33.58522274857292";
+
+      let splitPoly2 = polyString2.split(",");
+      let poly2 = [
+        splitPoly2.map((coord) => {
+          let split = coord.split(" ");
+          return [Number(split[1]), Number(split[0])];
+        }),
+      ];
+
+      easystaticmap.addMultiPolygon({
+        coords: poly2,
+        fillColor: "#ff000033",
+        strokeColor: "#ff0000",
+        strokeWidth: 1.5,
+      });
+
+      easystaticmap.renderMap(
+        {
+          lon: -101.8746,
+          lat: 33.5846,
+        },
+        17,
+        "mapCanvas"
+      );
+    </script>
+  </body>
+</html>
